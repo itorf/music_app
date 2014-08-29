@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MusicApp</title>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+</br>
+<% end %>
+
+<% if current_user %>
+	Signed in as: <%= current_user.email %></br>
+	<%= button_to "Logout", session_url, method: :delete %>
+<% end %>
+	
+
+	
+<%= yield %>
+
+<%= button_to "Home", root_url, method: :get %>
+</body>
+</html>

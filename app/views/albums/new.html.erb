@@ -1,0 +1,34 @@
+<h1> Create a New Album for <%= @band.name %></h1>
+
+<form action="<%= albums_url %>" method="POST">
+	<input type = "hidden" 
+			name="authenticity_token" 
+			value="<%= form_authenticity_token %>">
+		
+	<label for="album_name">Album Name</label></br>
+	<input type = "text" 
+		name="album[name]" 
+		value="<%= @album.name %>" 
+		id="album_name"></br>	
+		
+	<label for="album_band_name">Band Name</label></br>
+	<select name="album[band_id]" id ="album_band_name">
+		<% Band.all.each do |band| %>
+			<option value="<%= band.id %>" 
+				<%= "selected" if @band.name == band.name %>> 	
+				<%= band.name %>
+			</option>
+		<% end %>
+	</select></br>
+		
+	<label> Album Type </label></br>
+	<% Album::ALBUM_TYPES.each do |type| %>
+		<input type="radio" 
+				name="album[album_type]" 
+				value="<%= type %>">
+					<%= type %>
+				<%= "checked" if @album.album_type == type %></br>
+	<% end %></br>
+
+	<input type="submit" value="Save This Album">
+</form>
