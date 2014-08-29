@@ -1,5 +1,4 @@
 class NotesController < ApplicationController
-  before_action :verify_right_author, only: destroy
  
   def create
     @note = Note.create(note_params)
