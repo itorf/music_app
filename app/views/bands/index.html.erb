@@ -1,7 +1,8 @@
 <h1>All Bands</h1>
 
 <% @bands.each do |band| %>
-<%= link_to "#{band.name}", band_url(band), method: :get %> <%= button_to "Delete", band_url(band), method: :delete %>
+<%= link_to band.name, band_url(band) %> 
+<%= button_to "Delete", band_url(band), method: :delete %>
 </br>
 <% end %>
 

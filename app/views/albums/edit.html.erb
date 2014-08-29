@@ -1,10 +1,14 @@
 <h1>Edit <%= @album.name %></h1>
 
 <form action="<%= album_url %>" method="POST">
-<input type = "hidden" name="_method" value="PATCH">
-	<input type = "hidden" 
-			name="authenticity_token" 
-			value="<%= form_authenticity_token %>">
+	<input 
+		type="hidden" 
+		name="_method" 
+		value="PATCH">
+	<input 
+		type="hidden" 
+		name="authenticity_token" 
+		value="<%= form_authenticity_token %>">
 		
 	<label for="album_name">Album Name</label></br>
 	<input type = "text" 
@@ -16,9 +20,9 @@
 	<select name="album[band_id]" id ="album_band_name">
 		<% Band.all.each do |band| %>
 			<option value="<%= band.id %>"
-				<% unless @band.nil? %>
-					<%= "selected" if @band.name == band.name %> 
-				<% end %>	>
+				<%# unless @band.nil? %>
+					<%= "selected" if @band && @band.name == band.name %> 
+				<%# end %>	>
 				<%= band.name %>
 			</option>
 		<% end %>

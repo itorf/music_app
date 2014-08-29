@@ -14,6 +14,12 @@ class User < ActiveRecord::Base
   validates :email, :session_token, :password_digest, presence: true
   after_initialize :ensure_session_token
   
+  has_many(
+  :notes,
+  class_name: "Note",
+  foreign_key: :user_id,
+  primary_key: :id
+  )
   
   def self.generate_session_token
     SecureRandom::urlsafe_base64
